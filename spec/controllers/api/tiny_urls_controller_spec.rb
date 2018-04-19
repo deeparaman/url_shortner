@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+require 'pry'
 require 'rails_helper'
 
 RSpec.describe Api::TinyUrlsController, type: :controller do
@@ -51,7 +51,7 @@ RSpec.describe Api::TinyUrlsController, type: :controller do
     end
     it 'return no data found message if not match' do
       tiny_url_data = FactoryGirl.create(:tiny_url)
-      url = { a: '?a123d' }
+      url = { "3d48d0f"=>nil }
       get :redirect_to_url, params: url
       expect(response).to redirect_to(tiny_url_data.full_url)
       expect(response.status).to eq(302)
